@@ -1,3 +1,5 @@
+//@ HAMR: --platform JVM --slang-output-dir hamr/slang
+
 package TempControlAadl {
 
     private import AADL::*;
