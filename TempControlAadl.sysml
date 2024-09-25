@@ -130,11 +130,6 @@ package TempControlAadl {
 		
 		attribute :>> Dispatch_Protocol = Supported_Dispatch_Protocols::Periodic;
 		attribute :>> Period = 1000 [millisecond];
-		
-		//@Properties {
-		//	Dispatch_Protocol = Sporadic;
-		//	Period = 1000;
-		//}
 	}
 
 	part def OperatorInterface :> Thread {
@@ -144,11 +139,6 @@ package TempControlAadl {
 	
 		attribute :>> Dispatch_Protocol = Supported_Dispatch_Protocols::Periodic;
 	    attribute :>> Period = 1000 [millisecond];
-	    
-		//@Properties {
-		//	Dispatch_Protocol = Periodic;
-		//	Period = 1000;
-		//}
 	}
 
 	// Data Types
