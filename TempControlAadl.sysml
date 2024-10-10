@@ -10,7 +10,7 @@ package TempControlAadl {
 	  library
         functions
           def inRange(temp: Temperature): Base_Types::Boolean :=
-            temp.degrees >= -50.0 [f32] and temp.degrees <= 150.0 [f32];
+            temp.degrees >= -40.0 [f32] and temp.degrees <= 122.0 [f32];
         }*/
 
 	part def TempControlSystem :> System {
@@ -69,7 +69,7 @@ package TempControlAadl {
 
           integration
             assume currentTempRange:
-              (currentTemp.degrees >= -70.0 [f32]) & (currentTemp.degrees <= 80.0 [f32]);
+              (currentTemp.degrees >= -40.0 [f32]) & (currentTemp.degrees <= 122.0 [f32]);
 
           initialize
              modifies (latestFanCmd);
