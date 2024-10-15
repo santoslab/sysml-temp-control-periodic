@@ -1,55 +1,38 @@
-//@ HAMR: --platform JVM --slang-output-dir hamr/slang
+//@ HAMR: --platform JVM --package-name tc --runtime-monitoring
 
 package TempControlPeriodic {
 
   private import AADL::*;
   private import AADL_Project::*;
   private import AADL_Project::Time_Units::*;
+  private import TempSensor::*;
+  private import CoolingFan::*;
 
   language "GUMBO" /*{
     library
       functions
-        def inRange(temp: Temperature): Base_Types::Boolean :=
+        def inRange(temp: TempSensor::Temperature): Base_Types::Boolean :=
           temp.degrees >= -40.0 [f32] and temp.degrees <= 122.0 [f32];
   }*/
 
   part def TempControlSystem :> System {
     // subcomponents
-    part tcp : TempControlProcess;
+    part tcpoc : TempControlProcess;
   }
     
   part def TempControlProcess :> Process {
     // subcomponents
     part tempSensor : TempSensor;
     part tempControl : TempControl;
-    part fan : Fan;
-    part opInterface : OperatorInterface;
+    part fan : CoolingFan::Fan;
+    part operatorInterface : OperatorInterface;
 
     // connections
     connection ctTStoTC : PortConnection connect tempSensor.currentTemp to tempControl.currentTemp;
-    connection ctTStoOI : PortConnection connect tempSensor.currentTemp to opInterface.currentTemp;
+    connection ctTStoOI : PortConnection connect tempSensor.currentTemp to operatorInterface.currentTemp;
     connection fcTCtoF : PortConnection connect tempControl.fanCmd to fan.fanCmd;
     connection faFtoTC : PortConnection connect fan.fanAck to tempControl.fanAck;
-    connection spOItoTC : PortConnection connect opInterface.setPoint to tempControl.setPoint;
-  }
-    
-  // TempSensor Thread
-  part def TempSensor :> Thread {
-    // features
-    out port currentTemp : DataPort { out :> type : Temperature; }
-    
-    attribute :>> Dispatch_Protocol = Supported_Dispatch_Protocols::Periodic;
-    attribute :>> Period = 1000 [millisecond];
-
-    language "GUMBO" /*{
-      integration
-        guarantee Sensor_Temperature_Range:
-          TempControlPeriodic::GUMBO__Library::inRange(currentTemp);
-
-      initialize
-        guarantee initializes:
-          currentTemp.degrees == 72 [f32];
-    }*/
+    connection spOItoTC : PortConnection connect operatorInterface.setPoint to tempControl.setPoint;
   }
 
   part def TempControl :> Thread {
@@ -75,11 +58,11 @@ package TempControlPeriodic {
         modifies (latestFanCmd);
         guarantee initLatestFanCmd "Initialize state variable":
           // provide initial value for state variable and out data port
-          latestFanCmd == FanCmd.Off;
+          latestFanCmd == CoolingFan::FanCmd.Off;
 
         guarantee initFanCmd "Initial fan command":
           // provide initial value for state variable and out data port
-          fanCmd == FanCmd.Off;
+          fanCmd == CoolingFan::FanCmd.Off;
 
         // illustrate cases syntax
         compute
@@ -88,12 +71,12 @@ package TempControlPeriodic {
           guarantee altCurrentTempLTSetPoint "If current temperature is less than
                                              |the current low set point, then the fan state shall be Off" :
             '->:'(currentTemp.degrees < setPoint.low.degrees,
-                  latestFanCmd == FanCmd.Off and fanCmd == FanCmd.Off);
+                  latestFanCmd == CoolingFan::FanCmd.Off and fanCmd == CoolingFan::FanCmd.Off);
 
           guarantee altCurrentTempGTSetPoint "If current temperature is greater than
                                              |the current high set point, then the fan state shall be On":
             '->:'(currentTemp.degrees > setPoint.high.degrees,
-                  latestFanCmd == FanCmd.On & fanCmd == FanCmd.On);
+                  latestFanCmd == CoolingFan::FanCmd.On & fanCmd == CoolingFan::FanCmd.On);
 
           guarantee altCurrentTempInRange "If current temperature is greater than or equal to the
                                           |current low set point and less than or equal to the current high set point,
@@ -107,12 +90,12 @@ package TempControlPeriodic {
             case currentTempLTSetPoint "If current temperature is less than
                                        |the current low set point, then the fan state shall be Off":
               assume currentTemp.degrees < setPoint.low.degrees;
-              guarantee (latestFanCmd == FanCmd.Off) & (fanCmd == FanCmd.Off);
+              guarantee (latestFanCmd == CoolingFan::FanCmd.Off) & (fanCmd == CoolingFan::FanCmd.Off);
 
             case currentTempGTSetPoint "If current temperature is greater than
                                        |the current high set point, then the fan state shall be On":
               assume currentTemp.degrees > setPoint.high.degrees;
-              guarantee (latestFanCmd == FanCmd.On) & (fanCmd == FanCmd.On);
+              guarantee (latestFanCmd == CoolingFan::FanCmd.On) & (fanCmd == CoolingFan::FanCmd.On);
 
             case currentTempInRange "If current temperature is greater than or equal to the
                                     |current low set point and less than or equal to the current high set point,
@@ -125,15 +108,6 @@ package TempControlPeriodic {
     }*/
   }
 
-  part def Fan :> Thread {
-    // features
-    in port fanCmd : EventDataPort { in :> type : FanCmd; }
-    out port fanAck : EventDataPort { out :> type : FanAck; }
-        
-    attribute :>> Dispatch_Protocol = Supported_Dispatch_Protocols::Periodic;
-    attribute :>> Period = 1000 [millisecond];
-  }
-
   part def OperatorInterface :> Thread {
     // features
     in port currentTemp : DataPort { in :> type : Temperature; }
@@ -143,22 +117,7 @@ package TempControlPeriodic {
     attribute :>> Period = 1000 [millisecond];
   }
 
-  // Data Types
-  part def Temperature :> Data {
 
-    part degrees : Base_Types::Float_32;
-    attribute unit : TempUnit;
-
-    language "GUMBO" /*{
-      // data invariant
-      // data invariants are assumed whenever value of the datatype is consumed
-      //                  and must be proved whenever a value of the data type is constructed
-      invariants
-        inv AbsZero:
-          degrees >= GUMBO_Periodic_Definitions::GUMBO__Library::absoluteZero();
-    }*/
-  }
-    
   part def SetPoint :> Data {
     part low : Temperature;
     part high : Temperature;
@@ -170,21 +129,5 @@ package TempControlPeriodic {
           (high.degrees <= 110.0 [f32]) &
           (low.degrees <= high.degrees);
     }*/
-  }
-    
-  enum def TempUnit {
-    enum Fahrenheit;
-    enum Celsius;
-    enum Kelvin;
-  }
-    
-  enum def FanCmd {
-    enum On;
-    enum Off;
-  }
-    
-  enum def FanAck {
-    Ok;
-    Error;
   }
 }
