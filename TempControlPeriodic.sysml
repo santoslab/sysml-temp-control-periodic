@@ -4,12 +4,12 @@ package TempControlPeriodic {
 
   private import AADL::*;
   private import AADL_Project::*;
-  private import AADL_Project::Time_Units::*;
+  private import SI::*;
 
   language "GUMBO" /*{
     library
       functions
-        def inRange(temp: Temperature): Base_Types::Boolean :=
+        def inRange(temp: Temperature): Base_Types::Data_Boolean :=
           temp.degrees >= -40.0 [f32] and temp.degrees <= 122.0 [f32];
   }*/
 
@@ -39,7 +39,7 @@ package TempControlPeriodic {
     out port currentTemp : DataPort { out :> type : Temperature; }
     
     attribute :>> Dispatch_Protocol = Supported_Dispatch_Protocols::Periodic;
-    attribute :>> Period = 1000 [millisecond];
+    attribute :>> Period = 1 [s];
 
     language "GUMBO" /*{
       integration
@@ -60,7 +60,7 @@ package TempControlPeriodic {
     out port fanCmd : DataPort { out :> type : FanCmd; }
 
     attribute :>> Dispatch_Protocol = Supported_Dispatch_Protocols::Periodic;
-    attribute :>> Period = 1000 [millisecond];
+    attribute :>> Period = 1 [s];
 
     language "GUMBO" /*{
 
@@ -131,7 +131,7 @@ package TempControlPeriodic {
     out port fanAck : EventDataPort { out :> type : FanAck; }
         
     attribute :>> Dispatch_Protocol = Supported_Dispatch_Protocols::Periodic;
-    attribute :>> Period = 1000 [millisecond];
+    attribute :>> Period = 1 [s];
   }
 
   part def OperatorInterface :> Thread {
@@ -140,13 +140,13 @@ package TempControlPeriodic {
     out port setPoint : EventDataPort { out :> type : SetPoint; }
     
     attribute :>> Dispatch_Protocol = Supported_Dispatch_Protocols::Periodic;
-    attribute :>> Period = 1000 [millisecond];
+    attribute :>> Period = 1 [s];
   }
 
   // Data Types
   part def Temperature :> Data {
 
-    part degrees : Base_Types::Float_32;
+    part degrees : Base_Types::Data_Float_32;
     attribute unit : TempUnit;
 
     language "GUMBO" /*{
