@@ -1,0 +1,16 @@
+System Root: TempControlSystem_Instance [[/TempControlPeriodic.sysml, 14, 2]]
+
+Connection Instance: TempControlSystem_Instance.tcp.tempSensor.currentTemp -> TempControlSystem_Instance.tcp.tempControl.currentTemp
+
+  Connection References: [TempControlSystem_Instance.tcp.ctTStoTC, [/TempControlPeriodic.sysml, 27, 4]]
+
+   TempControlPeriodic.GUMBO__Library.inRange(currentTemp) __>:
+     currentTemp.degrees >= -40.0f &
+       currentTemp.degrees <= 122.0f
+
+Connection Instance: TempControlSystem_Instance.tcp.tempSensor.currentTemp -> TempControlSystem_Instance.tcp.opInterface.currentTemp
+
+  Connection References: [TempControlSystem_Instance.tcp.ctTStoOI, [/TempControlPeriodic.sysml, 28, 4]]
+
+   TempControlPeriodic.GUMBO__Library.inRange(currentTemp) __>:
+     <nil>
