@@ -13547,16 +13547,38 @@
                   "left" : {
                     "type" : "org.sireum.lang.ast.Exp.Binary",
                     "left" : {
-                      "type" : "org.sireum.lang.ast.Exp.Select",
-                      "receiverOpt" : {
-                        "type" : "Some",
-                        "value" : {
-                          "type" : "org.sireum.lang.ast.Exp.Ident",
-                          "id" : {
-                            "type" : "org.sireum.lang.ast.Id",
-                            "value" : "low",
+                      "type" : "org.sireum.lang.ast.Exp.Binary",
+                      "left" : {
+                        "type" : "org.sireum.lang.ast.Exp.Select",
+                        "receiverOpt" : {
+                          "type" : "Some",
+                          "value" : {
+                            "type" : "org.sireum.lang.ast.Exp.Ident",
+                            "id" : {
+                              "type" : "org.sireum.lang.ast.Id",
+                              "value" : "low",
+                              "attr" : {
+                                "type" : "org.sireum.lang.ast.Attr",
+                                "posOpt" : {
+                                  "type" : "Some",
+                                  "value" : {
+                                    "type" : "Position",
+                                    "uriOpt" : {
+                                      "type" : "Some",
+                                      "value" : "\/TempControlPeriodic.sysml"
+                                    },
+                                    "beginLine" : 167,
+                                    "beginColumn" : 11,
+                                    "endLine" : 167,
+                                    "endColumn" : 13,
+                                    "offset" : 6372,
+                                    "length" : 3
+                                  }
+                                }
+                              }
+                            },
                             "attr" : {
-                              "type" : "org.sireum.lang.ast.Attr",
+                              "type" : "org.sireum.lang.ast.ResolvedAttr",
                               "posOpt" : {
                                 "type" : "Some",
                                 "value" : {
@@ -13572,11 +13594,21 @@
                                   "offset" : 6372,
                                   "length" : 3
                                 }
+                              },
+                              "resOpt" : {
+                                "type" : "None"
+                              },
+                              "typedOpt" : {
+                                "type" : "None"
                               }
                             }
-                          },
+                          }
+                        },
+                        "id" : {
+                          "type" : "org.sireum.lang.ast.Id",
+                          "value" : "degrees",
                           "attr" : {
-                            "type" : "org.sireum.lang.ast.ResolvedAttr",
+                            "type" : "org.sireum.lang.ast.Attr",
                             "posOpt" : {
                               "type" : "Some",
                               "value" : {
@@ -13586,25 +13618,47 @@
                                   "value" : "\/TempControlPeriodic.sysml"
                                 },
                                 "beginLine" : 167,
-                                "beginColumn" : 11,
+                                "beginColumn" : 15,
                                 "endLine" : 167,
-                                "endColumn" : 13,
-                                "offset" : 6372,
-                                "length" : 3
+                                "endColumn" : 21,
+                                "offset" : 6376,
+                                "length" : 7
                               }
-                            },
-                            "resOpt" : {
-                              "type" : "None"
-                            },
-                            "typedOpt" : {
-                              "type" : "None"
                             }
+                          }
+                        },
+                        "targs" : [
+                        ],
+                        "attr" : {
+                          "type" : "org.sireum.lang.ast.ResolvedAttr",
+                          "posOpt" : {
+                            "type" : "Some",
+                            "value" : {
+                              "type" : "Position",
+                              "uriOpt" : {
+                                "type" : "Some",
+                                "value" : "\/TempControlPeriodic.sysml"
+                              },
+                              "beginLine" : 167,
+                              "beginColumn" : 11,
+                              "endLine" : 167,
+                              "endColumn" : 21,
+                              "offset" : 6372,
+                              "length" : 11
+                            }
+                          },
+                          "resOpt" : {
+                            "type" : "None"
+                          },
+                          "typedOpt" : {
+                            "type" : "None"
                           }
                         }
                       },
-                      "id" : {
-                        "type" : "org.sireum.lang.ast.Id",
-                        "value" : "degrees",
+                      "op" : ">=",
+                      "right" : {
+                        "type" : "org.sireum.lang.ast.Exp.LitF32",
+                        "value" : 50.0,
                         "attr" : {
                           "type" : "org.sireum.lang.ast.Attr",
                           "posOpt" : {
@@ -13616,17 +13670,15 @@
                                 "value" : "\/TempControlPeriodic.sysml"
                               },
                               "beginLine" : 167,
-                              "beginColumn" : 15,
+                              "beginColumn" : 26,
                               "endLine" : 167,
-                              "endColumn" : 21,
-                              "offset" : 6376,
-                              "length" : 7
+                              "endColumn" : 35,
+                              "offset" : 6387,
+                              "length" : 9
                             }
                           }
                         }
                       },
-                      "targs" : [
-                      ],
                       "attr" : {
                         "type" : "org.sireum.lang.ast.ResolvedAttr",
                         "posOpt" : {
@@ -13640,9 +13692,9 @@
                             "beginLine" : 167,
                             "beginColumn" : 11,
                             "endLine" : 167,
-                            "endColumn" : 21,
+                            "endColumn" : 35,
                             "offset" : 6372,
-                            "length" : 11
+                            "length" : 24
                           }
                         },
                         "resOpt" : {
@@ -13651,35 +13703,8 @@
                         "typedOpt" : {
                           "type" : "None"
                         }
-                      }
-                    },
-                    "op" : ">=",
-                    "right" : {
-                      "type" : "org.sireum.lang.ast.Exp.LitF32",
-                      "value" : 50.0,
-                      "attr" : {
-                        "type" : "org.sireum.lang.ast.Attr",
-                        "posOpt" : {
-                          "type" : "Some",
-                          "value" : {
-                            "type" : "Position",
-                            "uriOpt" : {
-                              "type" : "Some",
-                              "value" : "\/TempControlPeriodic.sysml"
-                            },
-                            "beginLine" : 167,
-                            "beginColumn" : 26,
-                            "endLine" : 167,
-                            "endColumn" : 35,
-                            "offset" : 6387,
-                            "length" : 9
-                          }
-                        }
-                      }
-                    },
-                    "attr" : {
-                      "type" : "org.sireum.lang.ast.ResolvedAttr",
-                      "posOpt" : {
+                      },
+                      "opPosOpt" : {
                         "type" : "Some",
                         "value" : {
                           "type" : "Position",
@@ -13694,35 +13719,10 @@
                           "offset" : 6372,
                           "length" : 24
                         }
-                      },
-                      "resOpt" : {
-                        "type" : "None"
-                      },
-                      "typedOpt" : {
-                        "type" : "None"
                       }
                     },
-                    "opPosOpt" : {
-                      "type" : "Some",
-                      "value" : {
-                        "type" : "Position",
-                        "uriOpt" : {
-                          "type" : "Some",
-                          "value" : "\/TempControlPeriodic.sysml"
-                        },
-                        "beginLine" : 167,
-                        "beginColumn" : 11,
-                        "endLine" : 167,
-                        "endColumn" : 35,
-                        "offset" : 6372,
-                        "length" : 24
-                      }
-                    }
-                  },
-                  "op" : "&",
-                  "right" : {
-                    "type" : "org.sireum.lang.ast.Exp.Binary",
-                    "left" : {
+                    "op" : "&",
+                    "right" : {
                       "type" : "org.sireum.lang.ast.Exp.Binary",
                       "left" : {
                         "type" : "org.sireum.lang.ast.Exp.Select",
@@ -13897,266 +13897,6 @@
                         }
                       }
                     },
-                    "op" : "&",
-                    "right" : {
-                      "type" : "org.sireum.lang.ast.Exp.Binary",
-                      "left" : {
-                        "type" : "org.sireum.lang.ast.Exp.Select",
-                        "receiverOpt" : {
-                          "type" : "Some",
-                          "value" : {
-                            "type" : "org.sireum.lang.ast.Exp.Ident",
-                            "id" : {
-                              "type" : "org.sireum.lang.ast.Id",
-                              "value" : "low",
-                              "attr" : {
-                                "type" : "org.sireum.lang.ast.Attr",
-                                "posOpt" : {
-                                  "type" : "Some",
-                                  "value" : {
-                                    "type" : "Position",
-                                    "uriOpt" : {
-                                      "type" : "Some",
-                                      "value" : "\/TempControlPeriodic.sysml"
-                                    },
-                                    "beginLine" : 169,
-                                    "beginColumn" : 11,
-                                    "endLine" : 169,
-                                    "endColumn" : 13,
-                                    "offset" : 6454,
-                                    "length" : 3
-                                  }
-                                }
-                              }
-                            },
-                            "attr" : {
-                              "type" : "org.sireum.lang.ast.ResolvedAttr",
-                              "posOpt" : {
-                                "type" : "Some",
-                                "value" : {
-                                  "type" : "Position",
-                                  "uriOpt" : {
-                                    "type" : "Some",
-                                    "value" : "\/TempControlPeriodic.sysml"
-                                  },
-                                  "beginLine" : 169,
-                                  "beginColumn" : 11,
-                                  "endLine" : 169,
-                                  "endColumn" : 13,
-                                  "offset" : 6454,
-                                  "length" : 3
-                                }
-                              },
-                              "resOpt" : {
-                                "type" : "None"
-                              },
-                              "typedOpt" : {
-                                "type" : "None"
-                              }
-                            }
-                          }
-                        },
-                        "id" : {
-                          "type" : "org.sireum.lang.ast.Id",
-                          "value" : "degrees",
-                          "attr" : {
-                            "type" : "org.sireum.lang.ast.Attr",
-                            "posOpt" : {
-                              "type" : "Some",
-                              "value" : {
-                                "type" : "Position",
-                                "uriOpt" : {
-                                  "type" : "Some",
-                                  "value" : "\/TempControlPeriodic.sysml"
-                                },
-                                "beginLine" : 169,
-                                "beginColumn" : 15,
-                                "endLine" : 169,
-                                "endColumn" : 21,
-                                "offset" : 6458,
-                                "length" : 7
-                              }
-                            }
-                          }
-                        },
-                        "targs" : [
-                        ],
-                        "attr" : {
-                          "type" : "org.sireum.lang.ast.ResolvedAttr",
-                          "posOpt" : {
-                            "type" : "Some",
-                            "value" : {
-                              "type" : "Position",
-                              "uriOpt" : {
-                                "type" : "Some",
-                                "value" : "\/TempControlPeriodic.sysml"
-                              },
-                              "beginLine" : 169,
-                              "beginColumn" : 11,
-                              "endLine" : 169,
-                              "endColumn" : 21,
-                              "offset" : 6454,
-                              "length" : 11
-                            }
-                          },
-                          "resOpt" : {
-                            "type" : "None"
-                          },
-                          "typedOpt" : {
-                            "type" : "None"
-                          }
-                        }
-                      },
-                      "op" : "<=",
-                      "right" : {
-                        "type" : "org.sireum.lang.ast.Exp.Select",
-                        "receiverOpt" : {
-                          "type" : "Some",
-                          "value" : {
-                            "type" : "org.sireum.lang.ast.Exp.Ident",
-                            "id" : {
-                              "type" : "org.sireum.lang.ast.Id",
-                              "value" : "high",
-                              "attr" : {
-                                "type" : "org.sireum.lang.ast.Attr",
-                                "posOpt" : {
-                                  "type" : "Some",
-                                  "value" : {
-                                    "type" : "Position",
-                                    "uriOpt" : {
-                                      "type" : "Some",
-                                      "value" : "\/TempControlPeriodic.sysml"
-                                    },
-                                    "beginLine" : 169,
-                                    "beginColumn" : 26,
-                                    "endLine" : 169,
-                                    "endColumn" : 29,
-                                    "offset" : 6469,
-                                    "length" : 4
-                                  }
-                                }
-                              }
-                            },
-                            "attr" : {
-                              "type" : "org.sireum.lang.ast.ResolvedAttr",
-                              "posOpt" : {
-                                "type" : "Some",
-                                "value" : {
-                                  "type" : "Position",
-                                  "uriOpt" : {
-                                    "type" : "Some",
-                                    "value" : "\/TempControlPeriodic.sysml"
-                                  },
-                                  "beginLine" : 169,
-                                  "beginColumn" : 26,
-                                  "endLine" : 169,
-                                  "endColumn" : 29,
-                                  "offset" : 6469,
-                                  "length" : 4
-                                }
-                              },
-                              "resOpt" : {
-                                "type" : "None"
-                              },
-                              "typedOpt" : {
-                                "type" : "None"
-                              }
-                            }
-                          }
-                        },
-                        "id" : {
-                          "type" : "org.sireum.lang.ast.Id",
-                          "value" : "degrees",
-                          "attr" : {
-                            "type" : "org.sireum.lang.ast.Attr",
-                            "posOpt" : {
-                              "type" : "Some",
-                              "value" : {
-                                "type" : "Position",
-                                "uriOpt" : {
-                                  "type" : "Some",
-                                  "value" : "\/TempControlPeriodic.sysml"
-                                },
-                                "beginLine" : 169,
-                                "beginColumn" : 31,
-                                "endLine" : 169,
-                                "endColumn" : 37,
-                                "offset" : 6474,
-                                "length" : 7
-                              }
-                            }
-                          }
-                        },
-                        "targs" : [
-                        ],
-                        "attr" : {
-                          "type" : "org.sireum.lang.ast.ResolvedAttr",
-                          "posOpt" : {
-                            "type" : "Some",
-                            "value" : {
-                              "type" : "Position",
-                              "uriOpt" : {
-                                "type" : "Some",
-                                "value" : "\/TempControlPeriodic.sysml"
-                              },
-                              "beginLine" : 169,
-                              "beginColumn" : 26,
-                              "endLine" : 169,
-                              "endColumn" : 37,
-                              "offset" : 6469,
-                              "length" : 12
-                            }
-                          },
-                          "resOpt" : {
-                            "type" : "None"
-                          },
-                          "typedOpt" : {
-                            "type" : "None"
-                          }
-                        }
-                      },
-                      "attr" : {
-                        "type" : "org.sireum.lang.ast.ResolvedAttr",
-                        "posOpt" : {
-                          "type" : "Some",
-                          "value" : {
-                            "type" : "Position",
-                            "uriOpt" : {
-                              "type" : "Some",
-                              "value" : "\/TempControlPeriodic.sysml"
-                            },
-                            "beginLine" : 169,
-                            "beginColumn" : 11,
-                            "endLine" : 169,
-                            "endColumn" : 37,
-                            "offset" : 6454,
-                            "length" : 27
-                          }
-                        },
-                        "resOpt" : {
-                          "type" : "None"
-                        },
-                        "typedOpt" : {
-                          "type" : "None"
-                        }
-                      },
-                      "opPosOpt" : {
-                        "type" : "Some",
-                        "value" : {
-                          "type" : "Position",
-                          "uriOpt" : {
-                            "type" : "Some",
-                            "value" : "\/TempControlPeriodic.sysml"
-                          },
-                          "beginLine" : 169,
-                          "beginColumn" : 11,
-                          "endLine" : 169,
-                          "endColumn" : 37,
-                          "offset" : 6454,
-                          "length" : 27
-                        }
-                      }
-                    },
                     "attr" : {
                       "type" : "org.sireum.lang.ast.ResolvedAttr",
                       "posOpt" : {
@@ -14167,12 +13907,12 @@
                             "type" : "Some",
                             "value" : "\/TempControlPeriodic.sysml"
                           },
-                          "beginLine" : 168,
+                          "beginLine" : 167,
                           "beginColumn" : 11,
-                          "endLine" : 169,
+                          "endLine" : 168,
                           "endColumn" : 37,
-                          "offset" : 6412,
-                          "length" : 69
+                          "offset" : 6372,
+                          "length" : 66
                         }
                       },
                       "resOpt" : {
@@ -14190,12 +13930,272 @@
                           "type" : "Some",
                           "value" : "\/TempControlPeriodic.sysml"
                         },
-                        "beginLine" : 168,
+                        "beginLine" : 167,
+                        "beginColumn" : 11,
+                        "endLine" : 168,
+                        "endColumn" : 37,
+                        "offset" : 6372,
+                        "length" : 66
+                      }
+                    }
+                  },
+                  "op" : "&",
+                  "right" : {
+                    "type" : "org.sireum.lang.ast.Exp.Binary",
+                    "left" : {
+                      "type" : "org.sireum.lang.ast.Exp.Select",
+                      "receiverOpt" : {
+                        "type" : "Some",
+                        "value" : {
+                          "type" : "org.sireum.lang.ast.Exp.Ident",
+                          "id" : {
+                            "type" : "org.sireum.lang.ast.Id",
+                            "value" : "low",
+                            "attr" : {
+                              "type" : "org.sireum.lang.ast.Attr",
+                              "posOpt" : {
+                                "type" : "Some",
+                                "value" : {
+                                  "type" : "Position",
+                                  "uriOpt" : {
+                                    "type" : "Some",
+                                    "value" : "\/TempControlPeriodic.sysml"
+                                  },
+                                  "beginLine" : 169,
+                                  "beginColumn" : 11,
+                                  "endLine" : 169,
+                                  "endColumn" : 13,
+                                  "offset" : 6454,
+                                  "length" : 3
+                                }
+                              }
+                            }
+                          },
+                          "attr" : {
+                            "type" : "org.sireum.lang.ast.ResolvedAttr",
+                            "posOpt" : {
+                              "type" : "Some",
+                              "value" : {
+                                "type" : "Position",
+                                "uriOpt" : {
+                                  "type" : "Some",
+                                  "value" : "\/TempControlPeriodic.sysml"
+                                },
+                                "beginLine" : 169,
+                                "beginColumn" : 11,
+                                "endLine" : 169,
+                                "endColumn" : 13,
+                                "offset" : 6454,
+                                "length" : 3
+                              }
+                            },
+                            "resOpt" : {
+                              "type" : "None"
+                            },
+                            "typedOpt" : {
+                              "type" : "None"
+                            }
+                          }
+                        }
+                      },
+                      "id" : {
+                        "type" : "org.sireum.lang.ast.Id",
+                        "value" : "degrees",
+                        "attr" : {
+                          "type" : "org.sireum.lang.ast.Attr",
+                          "posOpt" : {
+                            "type" : "Some",
+                            "value" : {
+                              "type" : "Position",
+                              "uriOpt" : {
+                                "type" : "Some",
+                                "value" : "\/TempControlPeriodic.sysml"
+                              },
+                              "beginLine" : 169,
+                              "beginColumn" : 15,
+                              "endLine" : 169,
+                              "endColumn" : 21,
+                              "offset" : 6458,
+                              "length" : 7
+                            }
+                          }
+                        }
+                      },
+                      "targs" : [
+                      ],
+                      "attr" : {
+                        "type" : "org.sireum.lang.ast.ResolvedAttr",
+                        "posOpt" : {
+                          "type" : "Some",
+                          "value" : {
+                            "type" : "Position",
+                            "uriOpt" : {
+                              "type" : "Some",
+                              "value" : "\/TempControlPeriodic.sysml"
+                            },
+                            "beginLine" : 169,
+                            "beginColumn" : 11,
+                            "endLine" : 169,
+                            "endColumn" : 21,
+                            "offset" : 6454,
+                            "length" : 11
+                          }
+                        },
+                        "resOpt" : {
+                          "type" : "None"
+                        },
+                        "typedOpt" : {
+                          "type" : "None"
+                        }
+                      }
+                    },
+                    "op" : "<=",
+                    "right" : {
+                      "type" : "org.sireum.lang.ast.Exp.Select",
+                      "receiverOpt" : {
+                        "type" : "Some",
+                        "value" : {
+                          "type" : "org.sireum.lang.ast.Exp.Ident",
+                          "id" : {
+                            "type" : "org.sireum.lang.ast.Id",
+                            "value" : "high",
+                            "attr" : {
+                              "type" : "org.sireum.lang.ast.Attr",
+                              "posOpt" : {
+                                "type" : "Some",
+                                "value" : {
+                                  "type" : "Position",
+                                  "uriOpt" : {
+                                    "type" : "Some",
+                                    "value" : "\/TempControlPeriodic.sysml"
+                                  },
+                                  "beginLine" : 169,
+                                  "beginColumn" : 26,
+                                  "endLine" : 169,
+                                  "endColumn" : 29,
+                                  "offset" : 6469,
+                                  "length" : 4
+                                }
+                              }
+                            }
+                          },
+                          "attr" : {
+                            "type" : "org.sireum.lang.ast.ResolvedAttr",
+                            "posOpt" : {
+                              "type" : "Some",
+                              "value" : {
+                                "type" : "Position",
+                                "uriOpt" : {
+                                  "type" : "Some",
+                                  "value" : "\/TempControlPeriodic.sysml"
+                                },
+                                "beginLine" : 169,
+                                "beginColumn" : 26,
+                                "endLine" : 169,
+                                "endColumn" : 29,
+                                "offset" : 6469,
+                                "length" : 4
+                              }
+                            },
+                            "resOpt" : {
+                              "type" : "None"
+                            },
+                            "typedOpt" : {
+                              "type" : "None"
+                            }
+                          }
+                        }
+                      },
+                      "id" : {
+                        "type" : "org.sireum.lang.ast.Id",
+                        "value" : "degrees",
+                        "attr" : {
+                          "type" : "org.sireum.lang.ast.Attr",
+                          "posOpt" : {
+                            "type" : "Some",
+                            "value" : {
+                              "type" : "Position",
+                              "uriOpt" : {
+                                "type" : "Some",
+                                "value" : "\/TempControlPeriodic.sysml"
+                              },
+                              "beginLine" : 169,
+                              "beginColumn" : 31,
+                              "endLine" : 169,
+                              "endColumn" : 37,
+                              "offset" : 6474,
+                              "length" : 7
+                            }
+                          }
+                        }
+                      },
+                      "targs" : [
+                      ],
+                      "attr" : {
+                        "type" : "org.sireum.lang.ast.ResolvedAttr",
+                        "posOpt" : {
+                          "type" : "Some",
+                          "value" : {
+                            "type" : "Position",
+                            "uriOpt" : {
+                              "type" : "Some",
+                              "value" : "\/TempControlPeriodic.sysml"
+                            },
+                            "beginLine" : 169,
+                            "beginColumn" : 26,
+                            "endLine" : 169,
+                            "endColumn" : 37,
+                            "offset" : 6469,
+                            "length" : 12
+                          }
+                        },
+                        "resOpt" : {
+                          "type" : "None"
+                        },
+                        "typedOpt" : {
+                          "type" : "None"
+                        }
+                      }
+                    },
+                    "attr" : {
+                      "type" : "org.sireum.lang.ast.ResolvedAttr",
+                      "posOpt" : {
+                        "type" : "Some",
+                        "value" : {
+                          "type" : "Position",
+                          "uriOpt" : {
+                            "type" : "Some",
+                            "value" : "\/TempControlPeriodic.sysml"
+                          },
+                          "beginLine" : 169,
+                          "beginColumn" : 11,
+                          "endLine" : 169,
+                          "endColumn" : 37,
+                          "offset" : 6454,
+                          "length" : 27
+                        }
+                      },
+                      "resOpt" : {
+                        "type" : "None"
+                      },
+                      "typedOpt" : {
+                        "type" : "None"
+                      }
+                    },
+                    "opPosOpt" : {
+                      "type" : "Some",
+                      "value" : {
+                        "type" : "Position",
+                        "uriOpt" : {
+                          "type" : "Some",
+                          "value" : "\/TempControlPeriodic.sysml"
+                        },
+                        "beginLine" : 169,
                         "beginColumn" : 11,
                         "endLine" : 169,
                         "endColumn" : 37,
-                        "offset" : 6412,
-                        "length" : 69
+                        "offset" : 6454,
+                        "length" : 27
                       }
                     }
                   },
